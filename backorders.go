@@ -94,9 +94,9 @@ GetForOrder gets all backorders for a given order using a provided order ID
 and is limited up to 100 results at a time, it accepts an offest param for pagination.
 See: https://picqer.com/en/api/backorders
 */
-func (s *BackorderServiceOp) GetForOrder(orderID, offset int) ([]Backorder, error) {
+func (s *BackorderServiceOp) GetForOrder(id, offset int) ([]Backorder, error) {
 	b := []Backorder{}
-	idStr := strconv.Itoa(orderID)
+	idStr := strconv.Itoa(id)
 	offsetStr := strconv.Itoa(offset)
 
 	res, err := s.client.NewRequest("GET", "orders/"+idStr+"/backorders?offset="+offsetStr, nil)

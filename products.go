@@ -13,10 +13,10 @@ See: https://picqer.com/en/api/products
 */
 type ProductService interface {
 	List() (*[]Product, error)
-	Get(int64) (*Product, error)
+	Get(int) (*Product, error)
 	Create(Product) (*Product, error)
 	Update(Product) (*Product, error)
-	Delete(int64) error
+	Delete(int) error
 }
 
 /*
@@ -69,7 +69,7 @@ type Product struct {
 }
 
 type Productfields struct {
-	IDProductField int64  `json:"idproductfield,omitempty"`
+	IDProductField int    `json:"idproductfield,omitempty"`
 	Title          string `json:"title,omitempty"`
 	Value          string `json:"value,omitempty"`
 }
@@ -131,9 +131,9 @@ func (s *ProductServiceOp) Update(p Product) (*Product, error) {
 Get returns a single product matching the prdoivded product ID
 See: https://picqer.com/en/api/products
 */
-func (s *ProductServiceOp) Get(id int64) (*Product, error) {
+func (s *ProductServiceOp) Get(id int) (*Product, error) {
 	p := Product{}
-	idString := strconv.FormatInt(id, 10)
+	idString := strconv.Itoa(id)
 
 	res, err := s.client.NewRequest("GET", "products/"+idString, nil)
 	if err != nil {
@@ -152,8 +152,8 @@ func (s *ProductServiceOp) Get(id int64) (*Product, error) {
 Delete will delete a product using a provided product ID
 See: https://picqer.com/en/api/products
 */
-func (s *ProductServiceOp) Delete(id int64) error {
-	idString := strconv.FormatInt(id, 10)
+func (s *ProductServiceOp) Delete(id int) error {
+	idString := strconv.Itoa(id)
 
 	_, err := s.client.NewRequest("DELETE", "products/"+idString, nil)
 	if err != nil {
