@@ -41,7 +41,7 @@ type Product struct {
 	IDReturnProductReplacement int             `json:"idreturn_product_replacement,omitempty"`
 	Name                       string          `json:"name,omitempty"`
 	Price                      float64         `json:"price,omitempty"`
-	FixedStockPrice            int             `json:"fixedstockprice,omitempty"`
+	FixedStockPrice            float64         `json:"fixedstockprice,omitempty"`
 	ProductCode                string          `json:"productcode,omitempty"`
 	ProductCodeSupplier        string          `json:"productcode_supplier,omitempty"`
 	DeliveryTime               string          `json:"deliverytime,omitempty"`
