@@ -64,7 +64,7 @@ type Order struct {
 	Updated                   string         `json:"updated,omitempty"`
 	Warehouses                []int          `json:"warehouses,omitempty"`
 	Products                  []Product      `json:"products,omitempty"`
-	Tags                      map[string]Tag `json:"tags,omitempty,omitempty"`
+	Tags                      map[string]Tag `json:"tags,omitempty"`
 	Orderfields               []Orderfields  `json:"orderfields,omitempty"`
 }
 

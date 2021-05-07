@@ -10,6 +10,7 @@ type Client struct {
 	Products       ProductService
 	PurchaseOrders PurchaseOrderService
 	Backorders     BackorderService
+	Stats          StatsService
 }
 
 // NewClient creates a new conntection to Piqcer
@@ -25,6 +26,7 @@ func NewClient(baseURL, token string) *Client {
 	c.Picklists = &PicklistServiceOp{client: c}
 	c.PurchaseOrders = &PurchaseOrderServiceOp{client: c}
 	c.Backorders = &BackorderServiceOp{client: c}
+	c.Stats = &StatsServiceOp{client: c}
 
 	return c
 }
