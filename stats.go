@@ -42,7 +42,7 @@ func (s *StatsServiceOp) Get(q string) (*Stat, error) {
 		return &stat, err
 	}
 
-	err = json.NewDecoder(res.Body).Decode(&s)
+	err = json.NewDecoder(res.Body).Decode(&stat)
 	if err != nil {
 		return &stat, err
 	}
