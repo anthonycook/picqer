@@ -30,7 +30,7 @@ func (c *Client) NewRequest(method, path string, body interface{}) (*http.Respon
 
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("User-Agent", "go-picqer (github.com/anthonycook/go-picqer - hi@acook.me)")
+	req.Header.Add("User-Agent", "go-picqer (github.com/anthonycook/picqer - hi@acook.me)")
 
 	res, _ := client.Do(req)
 
