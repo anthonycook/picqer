@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"net/http"
+	"time"
 )
 
 // NewRequest creates a new HTTP request with an optional JSON body
@@ -21,7 +22,7 @@ func (c *Client) NewRequest(method, path string, body interface{}) (*http.Respon
 
 	client := &http.Client{}
 
-	req, err := http.NewRequest(method, c.BaseURL+"/"+path, bytes.NewBuffer(j))
+	req, err := http.NewRequest(method, "https://"+c.BaseURL+"/api/v1/"+path, bytes.NewBuffer(j))
 	if err != nil {
 		return nil, err
 	}
@@ -33,6 +34,14 @@ func (c *Client) NewRequest(method, path string, body interface{}) (*http.Respon
 	req.Header.Add("User-Agent", "go-picqer (github.com/anthonycook/picqer - hi@acook.me)")
 
 	res, _ := client.Do(req)
+
+	// Check rate limit
+	rateLimit := res.Header.Get("X-RateLimit-Limit")
+	rateLimitRemaining := res.Header.Get("X-RateLimit-Remaining")
+
+	if rateLimitRemaining == rateLimit {
+		time.Sleep(60 * time.Second)
+	}
 
 	return res, nil
 }

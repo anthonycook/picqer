@@ -1,54 +1,11 @@
 package picqer
 
 type OrdersWebhook struct {
-	Idhook           int    `json:"idhook"`
-	Name             string `json:"name"`
-	Event            string `json:"event"`
-	EventTriggeredAt string `json:"event_triggered_at"`
-	Data             struct {
-		Idorder             int     `json:"idorder"`
-		Idcustomer          int     `json:"idcustomer"`
-		Orderid             string  `json:"orderid"`
-		Deliveryname        string  `json:"deliveryname"`
-		Deliverycontactname string  `json:"deliverycontactname"`
-		Deliveryaddress     string  `json:"deliveryaddress"`
-		Deliveryaddress2    string  `json:"deliveryaddress2"`
-		Deliveryzipcode     string  `json:"deliveryzipcode"`
-		Deliverycity        string  `json:"deliverycity"`
-		Deliveryregion      string  `json:"deliveryregion"`
-		Deliverycountry     string  `json:"deliverycountry"`
-		Invoicename         string  `json:"invoicename"`
-		Invoicecontactname  string  `json:"invoicecontactname"`
-		Invoiceaddress      string  `json:"invoiceaddress"`
-		Invoiceaddress2     string  `json:"invoiceaddress2"`
-		Invoicezipcode      string  `json:"invoicezipcode"`
-		Invoicecity         string  `json:"invoicecity"`
-		Invoiceregion       string  `json:"invoiceregion"`
-		Invoicecountry      string  `json:"invoicecountry"`
-		Reference           string  `json:"reference"`
-		Partialdelivery     bool    `json:"partialdelivery"`
-		Discount            float64 `json:"discount"`
-		Status              string  `json:"status"`
-		PublicStatusPage    string  `json:"public_status_page"`
-		Created             string  `json:"created"`
-		Updated             string  `json:"updated"`
-		Products            []struct {
-			Idproduct   int     `json:"idproduct"`
-			Idvatgroup  int     `json:"idvatgroup"`
-			Productcode string  `json:"productcode"`
-			Name        string  `json:"name"`
-			Remarks     string  `json:"remarks"`
-			Price       float64 `json:"price"`
-			Amount      int     `json:"amount"`
-			Weight      int     `json:"weight"`
-		} `json:"products"`
-		Tags        map[string]Tag `json:"tags"`
-		Orderfields []struct {
-			Idorderfield int    `json:"idorderfield"`
-			Title        string `json:"title"`
-			Value        string `json:"value"`
-		} `json:"orderfields"`
-	} `json:"data"`
+	Idhook           int     `json:"idhook"`
+	Name             string  `json:"name"`
+	Event            string  `json:"event"`
+	EventTriggeredAt string  `json:"event_triggered_at"`
+	Data             []Order `json:"data"`
 }
 
 type OrdersNotesCreatedWebhook struct {

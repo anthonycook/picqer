@@ -2,7 +2,6 @@ package picqer
 
 import (
 	"encoding/json"
-	"fmt"
 	"strconv"
 )
 
@@ -118,8 +117,19 @@ Create and save a new product, the response from Picqer is returned
 See: https://picqer.com/en/api/products
 */
 func (s *ProductServiceOp) Create(p Product) (*Product, error) {
-	fmt.Println(s.client.BaseURL)
-	return &p, nil
+	result := Product{}
+
+	res, err := s.client.NewRequest("POST", "products", p)
+	if err != nil {
+		return &p, err
+	}
+
+	err = json.NewDecoder(res.Body).Decode(&result)
+	if err != nil {
+		return &p, err
+	}
+
+	return &result, nil
 }
 
 // Update an existing product
