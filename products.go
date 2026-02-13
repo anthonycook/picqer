@@ -65,6 +65,8 @@ type Product struct {
 	AmountPicked               int             `json:"amount_picked,omitempty"`
 	AmountCancelled            int             `json:"amount_cancelled,omitempty"`
 	Remarks                    string          `json:"remarks,omitempty"`
+	HSCode                     string          `json:"hs_code,omitempty"`
+	CountryOfOrigin            string          `json:"country_of_origin,omitempty"`
 }
 
 type Productfields struct {
